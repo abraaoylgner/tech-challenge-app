@@ -3,7 +3,7 @@
   services:
     db:
       image: postgres:16
-      container_name: meu-postgres
+      container_name: tech-challenge-db
       restart: always
       environment:
         POSTGRES_USER: postgres
@@ -13,6 +13,19 @@
         - "5432:5432"
       volumes:
         - postgres-data:/var/lib/postgresql/data
+
+    app:
+      build: .
+      container_name: tech-challenge-java
+      restart: always
+      ports:
+        - "8080:8080"
+      depends_on:
+        - db
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tech_challenge_data
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: challenge
 
   volumes:
     postgres-data:
