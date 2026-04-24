@@ -1,6 +1,6 @@
-package com.pos.tech.challenge.app.entity;
+package com.pos.tech.challenge.app.adapter.out.repository.entity;
 
-import com.pos.tech.challenge.app.dto.UsuarioRequestDTO;
+import com.pos.tech.challenge.app.adapter.in.controller.request.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Usuario {
+public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,20 +30,13 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    private String endereco;
-
-    private boolean ehDonoRestaurante;
-
     private LocalDateTime dataUltimaAlteracao;
 
-    // Construtor para converter DTO em Entidade
-    public Usuario(UsuarioRequestDTO dto) {
+    public UsuarioEntity(UsuarioRequestDTO dto) {
         this.nome = dto.nome();
         this.email = dto.email();
         this.login = dto.login();
         this.senha = dto.senha();
-        this.endereco = dto.endereco();
-        this.ehDonoRestaurante = dto.ehDonoRestaurante();
         this.dataUltimaAlteracao = LocalDateTime.now();
     }
 }

@@ -1,4 +1,4 @@
-package com.pos.tech.challenge.app.dto;
+package com.pos.tech.challenge.app.adapter.in.controller.response;
 
 import java.time.LocalDateTime;
 
@@ -7,6 +7,5 @@ public record UsuarioResponseDTO(
         String nome,
         String email,
         String login,
-        String endereco,
         LocalDateTime dataUltimaAlteracao
 ) {}
