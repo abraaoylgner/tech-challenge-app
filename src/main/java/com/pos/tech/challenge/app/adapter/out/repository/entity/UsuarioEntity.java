@@ -1,6 +1,6 @@
 package com.pos.tech.challenge.app.adapter.out.repository.entity;
 
-import com.pos.tech.challenge.app.adapter.in.controller.request.UsuarioRequestDTO;
+import com.pos.tech.challenge.app.core.domain.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,13 +30,13 @@ public class UsuarioEntity {
     @Column(nullable = false)
     private String senha;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoUsuario tipoUsuario;
+
+    @Embedded
+    private EnderecoEmbeddable endereco;
+
     private LocalDateTime dataUltimaAlteracao;
 
-    public UsuarioEntity(UsuarioRequestDTO dto) {
-        this.nome = dto.nome();
-        this.email = dto.email();
-        this.login = dto.login();
-        this.senha = dto.senha();
-        this.dataUltimaAlteracao = LocalDateTime.now();
-    }
 }
