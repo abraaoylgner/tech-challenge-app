@@ -7,6 +7,8 @@ import com.pos.tech.challenge.app.core.port.out.UsuarioOutputPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @AllArgsConstructor
 public class UsuarioRepositoryAdapter implements UsuarioOutputPort {
@@ -16,11 +18,19 @@ public class UsuarioRepositoryAdapter implements UsuarioOutputPort {
 
     @Override
     public Usuario salvar(Usuario usuario) {
-
         var usuarioEntity = usuarioEntityMapper.toEntity(usuario);
-
         var entidadeSalva = usuarioRepository.save(usuarioEntity);
-
         return usuarioEntityMapper.toDomain(entidadeSalva);
+    }
+
+    @Override
+    public Optional<Usuario> buscarPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .map(usuarioEntityMapper::toDomain);
+    }
+
+    @Override
+    public void excluir(Long id){
+        usuarioRepository.deleteById(id);
     }
 }
