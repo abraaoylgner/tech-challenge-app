@@ -7,6 +7,7 @@ import com.pos.tech.challenge.app.core.port.out.UsuarioOutputPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -33,6 +34,14 @@ public class UsuarioRepositoryAdapter implements UsuarioOutputPort {
     public Optional<Usuario> buscarPorLogin(String login) {
         return usuarioRepository.findByLogin(login)
                 .map(usuarioEntityMapper::toDomain);
+    }
+
+    @Override
+    public List<Usuario> buscarPorNome(String nome) {
+        return usuarioRepository.findByNomeContainingIgnoreCase(nome)
+                .stream()
+                .map(usuarioEntityMapper::toDomain)
+                .toList();
     }
 
     @Override

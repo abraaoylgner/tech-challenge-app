@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
@@ -26,6 +28,19 @@ public class UsuarioController {
     public ResponseEntity<UsuarioResponseDTO> criar(@RequestBody UsuarioRequestDTO usuarioRequestDTO) {
         var responseInputPort = usuarioInputPort.criar(mapper.toDomain(usuarioRequestDTO));
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDto(responseInputPort));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UsuarioResponseDTO>> buscarPorNome(
+            @RequestParam(required = true) String nome) {
+
+        var usuarios = usuarioInputPort.buscarPorNome(nome);
+
+        var response = usuarios.stream()
+                .map(mapper::toDto)
+                .toList();
+
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")

@@ -6,6 +6,7 @@ import com.pos.tech.challenge.app.core.port.out.SenhaCriptoOutputPort;
 import com.pos.tech.challenge.app.core.port.out.UsuarioOutputPort;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UsuarioUseCase implements UsuarioInputPort {
 
@@ -36,6 +37,14 @@ public class UsuarioUseCase implements UsuarioInputPort {
         usuarioExistente.setDataUltimaAlteracao(LocalDateTime.now());
 
         return usuarioOutputPort.salvar(usuarioExistente);
+    }
+
+    @Override
+    public List<Usuario> buscarPorNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O nome para busca não pode estar vazio.");
+        }
+        return usuarioOutputPort.buscarPorNome(nome);
     }
 
     @Override
