@@ -12,6 +12,6 @@ public record UsuarioRequestDTO(
         @NotBlank String login,
         @NotBlank String senha,
         @NotNull TipoUsuario tipoUsuario,
-        @Valid EnderecoDTO endereco
+        @Valid EnderecoRequestDTO endereco
         ) {}
 
