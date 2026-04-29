@@ -30,6 +30,12 @@ public class UsuarioRepositoryAdapter implements UsuarioOutputPort {
     }
 
     @Override
+    public Optional<Usuario> buscarPorLogin(String login) {
+        return usuarioRepository.findByLogin(login)
+                .map(usuarioEntityMapper::toDomain);
+    }
+
+    @Override
     public void excluir(Long id){
         usuarioRepository.deleteById(id);
     }

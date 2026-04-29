@@ -6,9 +6,12 @@ import com.pos.tech.challenge.app.core.domain.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+import java.time.LocalDateTime;
+
+@Mapper(componentModel = "spring", imports = LocalDateTime.class)
 public interface UsuarioMapper {
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "dataUltimaAlteracao", expression = "java(LocalDateTime.now())")
     Usuario toDomain(UsuarioRequestDTO usuarioRequestDTO);
 

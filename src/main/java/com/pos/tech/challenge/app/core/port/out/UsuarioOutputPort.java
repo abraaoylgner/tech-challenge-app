@@ -7,5 +7,6 @@ import java.util.Optional;
 public interface UsuarioOutputPort {
     Usuario salvar(Usuario usuario);
     Optional<Usuario> buscarPorId(Long id);
+    Optional<Usuario> buscarPorLogin(String login);
     void excluir(Long id);
 }

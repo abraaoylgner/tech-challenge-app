@@ -2,6 +2,7 @@ package com.pos.tech.challenge.app.core.usecase;
 
 import com.pos.tech.challenge.app.core.domain.Usuario;
 import com.pos.tech.challenge.app.core.port.in.UsuarioInputPort;
+import com.pos.tech.challenge.app.core.port.out.SenhaCriptoOutputPort;
 import com.pos.tech.challenge.app.core.port.out.UsuarioOutputPort;
 
 import java.time.LocalDateTime;
@@ -9,13 +10,18 @@ import java.time.LocalDateTime;
 public class UsuarioUseCase implements UsuarioInputPort {
 
     private final UsuarioOutputPort usuarioOutputPort;
+    private final SenhaCriptoOutputPort senhaCriptoOutputPort;
 
-    public UsuarioUseCase(UsuarioOutputPort usuarioOutputPort) {
+    public UsuarioUseCase(UsuarioOutputPort usuarioOutputPort, SenhaCriptoOutputPort senhaCriptoOutputPort) {
         this.usuarioOutputPort = usuarioOutputPort;
+        this.senhaCriptoOutputPort = senhaCriptoOutputPort;
     }
 
     @Override
     public Usuario criar(Usuario usuario) {
+        String senhaCriptografada = senhaCriptoOutputPort.criptografar(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
+
         return usuarioOutputPort.salvar(usuario);
     }
 
