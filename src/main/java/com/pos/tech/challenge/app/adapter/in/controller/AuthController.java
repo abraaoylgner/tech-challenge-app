@@ -43,6 +43,6 @@ public class AuthController {
             return ResponseEntity.ok(new TokenResponseDTO(token));
         }
 
-        return ResponseEntity.status(401).build();
+        throw new IllegalArgumentException("Credenciais inválidas. Verifique seu login e senha.");
     }
 }
