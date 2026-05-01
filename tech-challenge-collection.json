@@ -1,0 +1,227 @@
+type: collection.insomnia.rest/5.0
+name: tech-challenge-app
+meta:
+  id: wrk_8a362db56a2d444c8bb7fdf06316388d
+  created: 1776966754312
+  modified: 1777424925669
+  description: ""
+collection:
+  - url: http://localhost:8081/v1/usuarios/1
+    name: Deletar Usuário
+    meta:
+      id: req_993dfacf87c84cc5bb1b256c4c4e47a1
+      created: 1776966754652
+      modified: 1777554485809
+      isPrivate: false
+      description: ""
+      sortKey: -1776966754652
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZWNoLWNoYWxsZW5nZS1hcHAiLCJzdWIiOiJhYnJhYW9ZbGduZXIiLCJ0aXBvIjoiQ0xJRU5URSIsImV4cCI6MTc3NzQzNDgxOH0.HIBvjPpcVEJ1aBh_Swx0vHDpHBjNWWsDQOecEso5tX4
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/v1/usuarios
+    name: Criar usuário
+    meta:
+      id: req_4372d062b88e44bcbb2a9ff9ff568874
+      created: 1776966996348
+      modified: 1777649940394
+      isPrivate: false
+      description: ""
+      sortKey: -1776966996348
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Thaline Bastos Carvlaho",
+          "email": "thaline@teste.com",
+          "login": "thaline1",
+          "senha": "thaline123",
+          "tipoUsuario": "CLIENTE",
+          "endereco": {
+            "rua": "Rua Leonardo Bonato",
+            "numero": "123",
+            "cidade": "Curitiba",
+            "cep": "80000-000"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/v1/auth/login
+    name: Login
+    meta:
+      id: req_878c1abc1cb84ee1b88e622aa2fd1cde
+      created: 1777427119135
+      modified: 1777650074569
+      isPrivate: false
+      description: ""
+      sortKey: -1776966875500
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+         	"login": "thaline1",
+          "senha": "thaline123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/v1/usuarios/1
+    name: Alterar Usuário
+    meta:
+      id: req_4cfdb8502ec94a17b53c807eb6947695
+      created: 1777427712340
+      modified: 1777554478329
+      isPrivate: false
+      description: ""
+      sortKey: -1776966815076
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Abraão Ylgner TESTE ATUALIZAR",
+          "email": "abraao@teste.com",
+          "login": "abraaoYlgner",
+          "senha": "senha123",
+          "tipoUsuario": "CLIENTE",
+          "endereco": {
+            "rua": "Rua das Flores",
+            "numero": "123",
+            "cidade": "Curitiba",
+            "cep": "80000-000"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZWNoLWNoYWxsZW5nZS1hcHAiLCJzdWIiOiJhYnJhYW9ZbGduZXIiLCJ0aXBvIjoiQ0xJRU5URSIsImV4cCI6MTc3NzQzNDgxOH0.HIBvjPpcVEJ1aBh_Swx0vHDpHBjNWWsDQOecEso5tX4
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/v1/usuarios/1/senha
+    name: Alterar Senha
+    meta:
+      id: req_3bb7f75aa9fc4df2823095de8bc8f7f6
+      created: 1777428903312
+      modified: 1777554463513
+      isPrivate: false
+      description: ""
+      sortKey: -1776966845288
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "novaSenha": "senha1234"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZWNoLWNoYWxsZW5nZS1hcHAiLCJzdWIiOiJhYnJhYW9ZbGduZXIiLCJ0aXBvIjoiQ0xJRU5URSIsImV4cCI6MTc3NzQzNDgxOH0.HIBvjPpcVEJ1aBh_Swx0vHDpHBjNWWsDQOecEso5tX4
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/v1/usuarios?nome=Maria
+    name: Busca por nome
+    meta:
+      id: req_bdd5ac8576f84fbcb35f65b65e2d02be
+      created: 1777433009610
+      modified: 1777554439326
+      isPrivate: false
+      description: ""
+      sortKey: -1776966935924
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Diego",
+          "email": "abraao@teste.com",
+          "login": "abraaoYlgner1234",
+          "senha": "senha1243",
+          "tipoUsuario": "CLIENTE",
+          "endereco": {
+            "rua": "Rua das Flores",
+            "numero": "123",
+            "cidade": "Curitiba",
+            "cep": "80000-000"
+          }
+        }
+    parameters:
+      - id: pair_3a4426d123df4ccbae6c5a0a33d09217
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZWNoLWNoYWxsZW5nZS1hcHAiLCJzdWIiOiJhYnJhYW9ZbGduZXIiLCJ0aXBvIjoiQ0xJRU5URSIsImV4cCI6MTc3NzUwOTI2OX0.6KL0u7N1HR1ntmyp-TIIj5IpZRkl_PMH6sP81q_wWjk
+      disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a617199f2c8534c3fe0a905d6a7bd498970e2a6f
+    created: 1776966754375
+    modified: 1776966754375
+environments:
+  name: Base Environment
+  meta:
+    id: env_a617199f2c8534c3fe0a905d6a7bd498970e2a6f
+    created: 1776966754341
+    modified: 1776966754341
+    isPrivate: false

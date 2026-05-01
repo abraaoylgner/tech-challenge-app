@@ -7,7 +7,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
@@ -22,7 +21,6 @@ public class GlobalExceptionHandler {
         );
 
         problemDetail.setTitle("Erro de Validação");
-        problemDetail.setType(URI.create("https://api.techchallenge.com/errors/bad-request"));
         problemDetail.setProperty("timestamp", LocalDateTime.now());
 
         var invalidFields = ex.getBindingResult().getFieldErrors().stream()
@@ -45,7 +43,6 @@ public class GlobalExceptionHandler {
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(status, ex.getMessage());
         problemDetail.setTitle("Erro de Regra de Negócio");
-        problemDetail.setType(URI.create("https://api.techchallenge.com/errors/business-rule"));
         problemDetail.setProperty("timestamp", LocalDateTime.now());
 
         return problemDetail;
