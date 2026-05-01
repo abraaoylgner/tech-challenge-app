@@ -50,10 +50,27 @@ A aplicação está dockerizada e orquestrada com Docker Compose, subindo simult
    
 3. Aguarde alguns segundos para o Spring Boot inicializar. A aplicação estará rodando na porta 8080 e o banco na porta 5432.
 
+## 💻 Como Executar Localmente (IDE)
+Caso deseje rodar a aplicação diretamente pela sua IDE (IntelliJ, Eclipse, VS Code) para fins de desenvolvimento e debug, é necessário alterar a porta de execução para evitar conflitos, uma vez que o container Docker da aplicação já ocupa a porta 8080.
+
+Certifique-se de que o banco de dados via Docker está rodando.
+
+No arquivo src/main/resources/application.yaml, adicione ou altere a porta do servidor para 8081:
+
+YAML
+server:
+port: 8081
+Execute a classe principal AppApplication.java.
+
+A aplicação local responderá na porta 8081, enquanto a versão Docker continuará na 8080.
+
+
+
 ## 📚 Documentação da API (Swagger)
 A API foi documentada utilizando o padrão OpenAPI. Com a aplicação em execução, acesse pelo navegador:
 
 👉 http://localhost:8080/swagger-ui.html
+👉 Via IDE (Local): http://localhost:8081/swagger-ui.html
 
 Pela interface do Swagger é possível visualizar exemplos de requisições, respostas de sucesso e erro (Padrão ProblemDetail), além de testar os endpoints restritos inserindo o token JWT no botão "Authorize".
 
@@ -75,4 +92,4 @@ DELETE /v1/usuarios/{id} - Exclui o usuário do banco (Requer Token).
 🧪 Testes Unitários e Collection
 Testes Automatizados: O projeto inclui testes unitários automatizados com JUnit e Mockito focados na camada de negócio (UsuarioUseCase). Para rodar os testes, execute mvn test.
 
-Insomnia Collection: Uma coleção em formato JSON cobrindo os principais fluxos de sucesso e erro está disponível na raiz deste repositório para importação rápida.
+Collection: Uma coleção em formato JSON cobrindo os principais fluxos de sucesso e erro está disponível na raiz deste repositório para importação rápida.
