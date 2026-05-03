@@ -23,6 +23,7 @@
       depends_on:
         - db
       environment:
+        SERVER_PORT: 8080
         SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tech_challenge_data
         SPRING_DATASOURCE_USERNAME: postgres
         SPRING_DATASOURCE_PASSWORD: challenge
